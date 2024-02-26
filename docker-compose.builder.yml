@@ -1,0 +1,17 @@
+version: '3'
+
+x-base: &x-base 
+  image: node:lts
+  volumes:
+    - nodemodules:/app/node_modules
+    - .:/app
+  working_dir: /app
+
+services:
+  install:
+    <<: *x-base
+    command: npm i
+
+volumes:
+  nodemodules:
+    external: true
